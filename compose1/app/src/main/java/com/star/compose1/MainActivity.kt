@@ -7,13 +7,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,6 +27,90 @@ class MainActivity : ComponentActivity() {
         setContent {
             Compose1Theme {
 
+                /*dealing with states
+//                declaring count as a state(mutable state -> value that can change over time)
+                var count by remember {
+                    mutableStateOf(0)
+                }
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    
+                    Text(
+                        text = "$count",
+                        fontSize = 30.sp
+                    )
+                    
+                    Button(onClick = {
+                        count++
+                    }) {
+                        Text(text = "Click me")
+                    }
+                }
+
+                 */
+
+                var textFieldVal by remember {
+                    mutableStateOf("")
+                }
+
+                var allNames by remember {
+                    mutableStateOf(listOf<String>())
+                }
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                ) {
+
+//                    top nav
+                    Row(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                     
+                        OutlinedTextField(
+                            value = textFieldVal,
+                            onValueChange ={ txt->
+                                //when the value changes
+                                textFieldVal = txt
+                            },
+                            modifier = Modifier.weight(1f)
+                        )
+                        
+//                        adding spacing between elements
+                        Spacer(modifier = Modifier.width(16.dp))
+                        
+                        Button(onClick = {
+                            if(textFieldVal.isNotBlank()) {
+                                allNames = allNames + textFieldVal
+                                textFieldVal=""
+                            }
+                        }) {
+                            Text(text = "Add")
+                        }
+                    }
+
+                    LazyColumn (
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ){
+                        items(allNames){
+                            curname->
+                                Text(
+                                    text = "$curname",
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(16.dp)
+                                )
+
+                            Divider()
+                        }
+                    }
+
+                }
             }
         }
     }
