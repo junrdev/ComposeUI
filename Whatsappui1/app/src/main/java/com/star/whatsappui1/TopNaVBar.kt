@@ -32,7 +32,6 @@ fun TopNav() {
             Icon(
                 painter = painterResource(id = R.drawable.camera_24),
                 contentDescription = "camera icon",
-                modifier = 
 
             )
         }
