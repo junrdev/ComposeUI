@@ -21,14 +21,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Whatsappui1Theme {
 
-                Box (modifier = Modifier
-                    .fillMaxSize()
-                    .background(HomeGreen)){
-                    TopNav()
-//                    ChatsScreen(chats = listOf(
-//                        Chat(content = "Hello world", sender = "Brian", timeSent = "07:30")
-//                    ))
-                }
+                HomeScreen()
+
             }
         }
     }
