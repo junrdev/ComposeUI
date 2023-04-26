@@ -1,5 +1,6 @@
 package com.star.whatsappui1
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,7 +19,7 @@ import com.star.whatsappui1.ui.theme.FabBg
 import com.star.whatsappui1.ui.theme.HomeGreen
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(context: Context) {
     Box(modifier = Modifier
         .fillMaxSize()
         .background(HomeGreen),){
@@ -46,7 +47,8 @@ fun HomeScreen() {
                         Chat(content = "Hello world", sender = "Brian", timeSent = "07:30"),
                         Chat(content = "Hello world", sender = "Brian", timeSent = "07:30")
                     )
-                )
+                ,
+                context)
 
             }
         }

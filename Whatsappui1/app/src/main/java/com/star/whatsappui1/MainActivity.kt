@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Whatsappui1Theme {
 
-                HomeScreen()
+                HomeScreen(context = applicationContext)
 
             }
         }
